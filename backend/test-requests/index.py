@@ -1,4 +1,4 @@
 import requests
 
-res = requests.get('http://tracker.perpetum-mobile.ru:82/', data={'command': 'migration'})
+res = requests.get('http://localhost:82/', data={'command': 'site-database-pull'})
 print(res.text)

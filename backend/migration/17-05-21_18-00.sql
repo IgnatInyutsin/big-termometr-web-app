@@ -5,7 +5,8 @@ lastname VARCHAR(50) NOT NULL);
 
 CREATE TABLE IF NOT EXISTS temperature
 (id SERIAL NOT NULL PRIMARY KEY,
-temperature SMALLINT NOT NULL,
+user_id INT NOT NULL,
+temperature FLOAT(3,1) NOT NULL,
 datatime BIGINT NOT NULL);
 
 CREATE TABLE IF NOT EXISTS photos
