@@ -52,6 +52,9 @@ services:
     environment: 
       FLASK_DEBUG: 1
       FLASK_ENV: docker
+      POSTGRES_PASSWORD: $DB_PASS
+      POSTGRES_USER: $DB_USER
+      POSTGRES_DB: $DB_NAME
     networks:
       net:
 

@@ -1,18 +1,12 @@
 import os
 from flask import Flask, jsonify, request
 import app
-import psycopg2
+import database
 
 def main():
-	#подключение к бд
-	db = psycopg2.connect(
-		database="temperature_database",
-		user="queantorium_admin",
-		password="PaSsWoRd21",
-		host="pg_db",
-		port="5432"
-	)
-	
+
+	# Подключаемся к БД
+	db = database.init()
 	#устанавливаем курсор
 	cursor = db.cursor()
 

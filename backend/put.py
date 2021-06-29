@@ -1,22 +1,18 @@
 import os
 import app
-import psycopg2
+import database 
 import time
 
 def main(data):
-	#подключение к бд
-	db = psycopg2.connect(
-		database="temperature_database",
-		user="queantorium_admin",
-		password="PaSsWoRd21",
-		host="pg_db",
-		port="5432"
-	)
+
+	# Подключаемся к БД
+	db = database.init()
+
 	#устанавливаю курсор
 	cursor = db.cursor()
 	#добавляю ячейку
-	cursor.execute('''INSERT INTO temperature (user_id, temperature, datatime) 
-	VALUES (${data.user_id}, ${data.temperature}, ${int(time.time())});''')	
+	cursor.execute("""INSERT INTO temperature (user_id, temperature, datatime) 
+	VALUES (%s, %s, %s);""",(data["user_id"], data["temperature"], int(time.time())))	
 	#отправляем изменения
 	db.commit()
 
